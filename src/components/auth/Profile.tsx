@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/auth';
+import type { User } from 'firebase/auth';
 import { updateProfile, deleteUser } from 'firebase/auth';
 import './auth.css';
 const Profile = () => {
