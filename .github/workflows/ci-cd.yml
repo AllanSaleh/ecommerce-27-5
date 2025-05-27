@@ -1,0 +1,39 @@
+name: ECommerce App
+
+on:
+  push:
+    branches:
+      - main #Trigger the workflow on pushes to the main and master branch
+      - master
+  pull_request:
+    branches:
+      - main #Trigger the workflow on pull-requests targeting the main and master branch
+      - master
+
+jobs:
+  build: #Continuous Integration
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      # Step 2: Setup Node JS
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+      
+      # Step 4: Run test
+      - name: Run tests
+        run: npm test
+
+      # Step 5: Build React app
+      - name: Build React app
+        run: npm run build
+       
